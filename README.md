@@ -1,7 +1,8 @@
-# whatsapp bot
-An app to demonstrate how to create a whatsapp bot
+# whatsapp jokes bot
+A simple app to tell jokes on whatsapp.
 
 ### Technologies used
 - Flask
 - Twilio
 - ngrok
+- dialogflow
