@@ -1,6 +1,8 @@
 from flask import Flask, request
 from twilio.twiml.messaging_response import MessagingResponse
 
+from utils import fetch_reply
+
 app = Flask(__name__)
 
 @app.route("/")
@@ -12,10 +14,13 @@ def sms_reply():
     """Respond to incoming calls with a simple text message."""
     # Fetch the massage
     msg = request.form.get('Body')
+    phone_number = request.form.get('From')
+
+    reply = fetch_reply(msg, phone_number)
 
     # Create reply
     resp = MessagingResponse()
-    resp.message("You said: {}".format(msg))
+    resp.message(reply)
 
     return str(resp)
 
